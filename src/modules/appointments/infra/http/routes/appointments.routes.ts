@@ -4,7 +4,7 @@ import { getCustomRepository } from 'typeorm'
 
 
 
-import AppointmentsRepository from '../../../repositories/AppointmentsRepository'
+import AppointmentsRepository from '../../typeorm/repositories/AppointmentsRepository'
 import CreateAppointmentsServices from '../../../services/CreateAppointmentService'
 
 import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated'
