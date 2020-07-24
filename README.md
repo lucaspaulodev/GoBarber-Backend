@@ -1,2 +1,2 @@
 # First-Project-Node
-First-Project-Node
+Backend of GoBarber Application
