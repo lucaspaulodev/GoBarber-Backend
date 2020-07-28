@@ -90,7 +90,3 @@ describe('ResetPasswordService', () => {
 
 })
 
-// hash
-// 2h de exp
-// user token in
-// user in
