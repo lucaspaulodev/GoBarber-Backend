@@ -3,9 +3,6 @@ import {container} from 'tsyringe'
 
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService'
 
-// Segundo a metodologia RESTFULL, um controller deve ter apenas os metodos:
-// Index, show, create, update, delete
-
 export default class SessionsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const {email, password} = request.body
