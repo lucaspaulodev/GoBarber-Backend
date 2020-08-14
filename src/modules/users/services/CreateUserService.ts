@@ -4,6 +4,7 @@ import AppError from '@shared/errors/AppError'
 import IUsersRepository from '@modules/users/repositories/IUserRepository'
 import IHashProvider from '../providers/HashProvider/models/IHashProvider'
 import User from '../infra/typeorm/entities/User'
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider'
 
 interface IRequest{
   name: string;
@@ -18,6 +19,8 @@ class CreateUserService {
     private usersRepository: IUsersRepository,
     @inject('HashProvider')
     private hashProvider: IHashProvider,
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider,
   ) {}
 
   public async execute({name, email, password}: IRequest): Promise<User> {
@@ -34,6 +37,8 @@ class CreateUserService {
       email,
       password: hashedPassword,
     })
+
+    await this.cacheProvider.invalidatePrefix('provider-list')
 
     return user
   }
