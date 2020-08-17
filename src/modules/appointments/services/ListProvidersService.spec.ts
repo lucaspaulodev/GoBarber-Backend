@@ -1,8 +1,8 @@
-import AppError from '@shared/errors/AppError'
-
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository'
 import ListProvidersServices from './ListProvidersServices'
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider'
 
+let fakeCacheProvider: FakeCacheProvider
 let fakeUsersRepository: FakeUsersRepository
 let listProviders: ListProvidersServices
 
@@ -10,8 +10,11 @@ let listProviders: ListProvidersServices
 describe('List Providers', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository()
+    fakeCacheProvider = new FakeCacheProvider()
+
     listProviders = new ListProvidersServices(
       fakeUsersRepository,
+      fakeCacheProvider
     )
   })
 
